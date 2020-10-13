@@ -1,0 +1,19 @@
+<table class="table table-striped">
+<tr> <th>NUMBER</th> 
+<th>ID</th>
+<th>NICKNAME</th>
+<th>RANK</th>
+<th>TITLE</th>
+<th>DATE</th>
+{% for row in page_obj.0 %}
+<tr>
+<td>{{row.NUMBER}}</td> 
+<td>{{row.ID}}</td> 
+<td>{{row.NICKNAME}}</td> 
+<td>{{row.RANK}}</td> 
+<td>{{row.TITLE}}</td> 
+<td>{{row.DATE}}</td> 
+
+</tr>
+{% endfor %}
+</table>
