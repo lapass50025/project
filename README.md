@@ -20,10 +20,10 @@ IP 주소는 172.17.0.2 이다.
 
 ## 구름에 모듈 설치하기
 
-> $ pip install bs4
-> $ pip install lxml
-> $ pip install pymongo
+$ pip install bs4
+$ pip install lxml
+$ pip install pymongo
 
 ## mongod 서버 실행하기
-mongod --bind_ip_all
+mongod
 
