@@ -1,0 +1,17 @@
+<table class="table table-striped">
+    <tr> <th>CPNAME</th> 
+    <th>JOB</th>
+    <th>PRICE</th>
+    <th>WORKTIME</th>
+    {% for row in page_obj.0 %}
+    <tr>
+    <td>{{row.CPNAME}}</td> 
+    <td>{{row.JOB}}</td> 
+    <td>{{row.PRICE}}</td> 
+    <td>{{row.WORKTIME}}</td> 
+    
+    </tr>
+    {% endfor %}
+    </table>
+
+    , , , 

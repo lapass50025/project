@@ -66,7 +66,7 @@ def ReadWorkGoKr():
     options.add_argument('--headless')
 
     # 드라이버 불러오기
-    driver = webdriver.Chrome('/crawling/chromedriver.exe')
+    driver = webdriver.Chrome('/crawling/chromedriver')
     driver.implicitly_wait(3)
 
     # 드라이버 get 메서드 호출하기
