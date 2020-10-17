@@ -20,5 +20,6 @@ from restapi import views as restapiview
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('board/', include('board.urls')),
+    path('maps/', include('maps.urls')),
     path('', restapiview.home, name='home')
 ]
