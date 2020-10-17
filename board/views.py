@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from pymongo import MongoClient
 
 
@@ -38,3 +39,25 @@ def listjob(request):
     return render(request, 'board/listjob.html', context=data)
 
 
+
+#
+def listpage(request):
+    data = request.GET.copy()
+
+    # MongoClient 객체 얻기
+    client = MongoClient("mongodb://127.0.0.1:27017/")
+
+    # db 선택하기
+    db = client.mydb
+
+    # 테이블 내용 얻기
+    content = list(db.MOVIEBOARD.find({}))
+
+    # 페이지 개수 설정하기
+    paginator = Paginator(content, 10)
+
+    # 데이터 얻기
+    page_number = request.GET.get('page', 1)
+    data['page_obj'] = paginator.get_page(page_number)
+
+    return render(request, 'board/listpage.html', context=data)
