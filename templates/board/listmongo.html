@@ -1,4 +1,11 @@
-<table class="table table-striped">
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container">
+<table class="table">
 <tr> <th>NUMBER</th> 
 <th>ID</th>
 <th>NICKNAME</th>
@@ -17,3 +24,6 @@
 </tr>
 {% endfor %}
 </table>
+</div>
+</body>
+</html>
