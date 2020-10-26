@@ -1,5 +1,6 @@
 # 모듈 불러오기
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By 
 
 from pymongo import MongoClient
@@ -34,7 +35,7 @@ def InsertDB( client, dbname, tbname, dataList ):
     data['payment'] = dataList[2]
     data['work_time'] = dataList[3]
 
-    db[tbname].insert(data)
+    db[tbname].insert_one(data)
 
 def ShowDB( client, dbname, tbname ):
     """
@@ -61,13 +62,15 @@ def ShowDB( client, dbname, tbname ):
 # work.go.kr 읽엉오기
 def ReadWorkGoKr():
     # 옵션 주기
-    options = webdriver.ChromeOptions()
-    options.add_argument("--no-sandbox")
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--headless')
-
+    # options = webdriver.ChromeOptions()
+    # options.add_argument("--no-sandbox")
+    # options.add_argument('--disable-dev-shm-usage')
+    # options.add_argument('--headless')
+    
     # 드라이버 불러오기
-    driver = webdriver.Chrome('/crawling/chromedriver')
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome(executable_path="/crawling/chromedriver", options=options)
     driver.implicitly_wait(3)
 
     # 드라이버 get 메서드 호출하기
