@@ -17,14 +17,14 @@ def ConnectDB():
     client = MongoClient(str_server)
     return client
 
-def InsertDB( client, dataList ):
+def InsertDB( client, dbname, tbname, dataList ):
     """
     MOVIEBOARD 테이블에 데이터를 추가한다.
     client : MongoClient 객체
     dataList : MOVIEBOARD 정보를 담고 있는 리스트 변수 ( NUMBER, ID, NICKNAME, RANK, TITLE, DATE  )
     """
     # DB 선택하기
-    db = client['mydb']
+    db = client[dbname]
 
     # dict 데이터 객체 생성하기
     data = dict()
@@ -35,19 +35,19 @@ def InsertDB( client, dataList ):
     data['TITLE'] = dataList[4]
     data['DATE'] = dataList[5]    
 
-    db.MOVIEBOARD.insert(data)
+    db[tbname].insert(data)
 
-def ShowDB( client ):
+def ShowDB( client, dbname, tbname ):
     """
     MOVIEBOARD 테이블의 내용을 출력한다.
     client : MongoClient 객체
     """
 
     # DB 선택하기
-    db = client['mydb']
+    db = client[dbname]
 
     # cursor 얻기
-    cursor = db.MOVIEBOARD.find()
+    cursor = db[tbname].find()
 
     nCount = 1
     for row in cursor:
@@ -123,7 +123,7 @@ def ReadPage(client, nPage):
         dataList.append(strTitle)
         dataList.append(strDate)
 
-        InsertDB(client, dataList)
+        InsertDB(client, 'testdb', 'jobsite', dataList)
 
 # 메인 함수
 def main():
@@ -136,7 +136,7 @@ def main():
         print("{} 번째 페이지 읽는 중".format(i))
 
     # 출력하기
-    ShowDB(client)
+    ShowDB(client, 'testdb', 'jobsite')
 
     # MongoClient 객체 닫기
     client.close()
