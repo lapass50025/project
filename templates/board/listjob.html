@@ -6,16 +6,16 @@
 <body>
 <div class="container">
 <table class="table table-striped">
-    <tr> <th>CPNAME</th> 
-    <th>JOB</th>
-    <th>PRICE</th>
-    <th>WORKTIME</th>
+    <tr> <th>company_name</th> 
+    <th>title</th>
+    <th>payment</th>
+    <th>work_time</th>
     {% for row in page_obj.0 %}
     <tr>
-    <td>{{row.CPNAME}}</td> 
-    <td>{{row.JOB}}</td> 
-    <td>{{row.PRICE}}</td> 
-    <td>{{row.WORKTIME}}</td> 
+    <td>{{row.company_name}}</td> 
+    <td>{{row.title}}</td> 
+    <td>{{row.payment}}</td> 
+    <td>{{row.work_time}}</td> 
     
     </tr>
     {% endfor %}

@@ -22,17 +22,17 @@ def InsertDB( client, dbname, tbname, dataList ):
     """
     WORKGOKR 테이블에 데이터를 추가한다.
     client : MongoClient 객체
-    dataList : WORKGOKR 정보를 담고 있는 리스트 변수 ( CPNAME, JOB, PRICE, WORKTIME )
+    dataList : WORKGOKR 정보를 담고 있는 리스트 변수 ( company_name, title, payment, work_time )
     """
     # DB 선택하기
     db = client[dbname]
 
     # dict 데이터 객체 생성하기
     data = dict()
-    data['CPNAME'] = dataList[0]
-    data['JOB'] = dataList[1]
-    data['PRICE'] = dataList[2]
-    data['WORKTIME'] = dataList[3]
+    data['company_name'] = dataList[0]
+    data['title'] = dataList[1]
+    data['payment'] = dataList[2]
+    data['work_time'] = dataList[3]
 
     db[tbname].insert(data)
 
@@ -51,10 +51,10 @@ def ShowDB( client, dbname, tbname ):
     nCount = 1
     for row in cursor:
         print("%d" %nCount)
-        print("회사 이름 : %s" %row['CPNAME'])
-        print("직업 소개 : %s" %row['JOB'])
-        print("급여 : %s" %row['PRICE'])
-        print("근무시간 : %s" %row['WORKTIME'])
+        print("회사 이름 : %s" %row['company_name'])
+        print("직업 소개 : %s" %row['title'])
+        print("급여 : %s" %row['payment'])
+        print("근무시간 : %s" %row['work_time'])
         print("-"*20)
         nCount = nCount + 1
 

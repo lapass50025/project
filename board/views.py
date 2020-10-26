@@ -30,10 +30,10 @@ def listjob(request):
     client = MongoClient('mongodb://127.0.0.1:27017/')
 
     # DB 선택하기
-    mydb = client.mydb
+    db = client['testdb']
 
     # WORKGOKR 테이블 얻기
-    result = list(mydb.WORKGOKR.find({}))
+    result = list(db['workgokr'].find({}))
     data['page_obj'] = result
 
     return render(request, 'board/listjob.html', context=data)
