@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from pymongo import MongoClient
 import sys
 import time
+import os
 
 
 def ConnectDB():
@@ -67,10 +68,14 @@ def ReadWorkGoKr():
     # options.add_argument('--disable-dev-shm-usage')
     # options.add_argument('--headless')
     
+
     # 드라이버 불러오기
+    strfile = os.path.dirname(os.path.realpath(__file__))
+    strfile = strfile + "/chromedriver_86_4240"
+
     options = Options()
     options.headless = True
-    driver = webdriver.Chrome(executable_path="/crawling/chromedriver", options=options)
+    driver = webdriver.Chrome(executable_path=strfile, options=options)
     driver.implicitly_wait(3)
 
     # 드라이버 get 메서드 호출하기
