@@ -14,8 +14,8 @@ def ConnectDB():
     pymongo 연결하기
     리턴값 : MongoCLient 객체
     """
-    # str_server = "mongodb://192.168.219.110:27017/"
-    str_server = "mongodb://127.0.0.1:27017/"
+    str_server = "mongodb://192.168.17.128:27017/"
+    # str_server = "mongodb://127.0.0.1:27017/"
 
     client = MongoClient(str_server)
     return client
@@ -67,11 +67,14 @@ def ReadWorkGoKr():
     # options.add_argument("--no-sandbox")
     # options.add_argument('--disable-dev-shm-usage')
     # options.add_argument('--headless')
-    
+
+    # Chrome Driver
+    # https://chromedriver.chromium.org/downloads    
 
     # 드라이버 불러오기
     strfile = os.path.dirname(os.path.realpath(__file__))
-    strfile = strfile + "/chromedriver_86_4240"
+    # strfile = strfile + "/chromedriver_86_4240"
+    strfile = strfile + "/chromedriver_86_4240.exe"
 
     options = Options()
     options.headless = True
@@ -88,13 +91,13 @@ def ReadWorkGoKr():
     job_list = [ elem.text for elem in driver.find_elements_by_xpath("//div[@class='cp-info-in']") ]
 
     # 급여
-    price_list = [ elem.text for elem in driver.find_elements_by_xpath("//table/tbody/tr/td[4]/div/p[1]") ]
+    pay_list = [ elem.text for elem in driver.find_elements_by_xpath("//table/tbody/tr/td[4]/div/p[1]") ]
 
     # 근무시간
     time_list = [ elem.text for elem in driver.find_elements_by_xpath("//table/tbody/tr/td[4]/div/p[3]") ]
 
     # 결과 리스트
-    item_list = list(zip(cp_list, job_list, price_list, time_list))
+    item_list = list(zip(cp_list, job_list, pay_list, time_list))
 
     # DB 저장하기
     client = ConnectDB()

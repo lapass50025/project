@@ -10,7 +10,11 @@ def index(request):
     data = request.GET.copy()
 
     # MongoClient 객체 얻기
-    client = MongoClient('mongodb://127.0.0.1:27017/')
+    str_server = "mongodb://192.168.17.128:27017/"
+    # str_server = "mongodb://127.0.0.1:27017/"
+
+    # client = MongoClient(str_server)
+    client = MongoClient(str_server)
 
     # DB 선택하기
     mydb = client.mydb
@@ -27,7 +31,11 @@ def listjob(request):
     data = request.GET.copy()
 
     # MongoClient 객체 얻기
-    client = MongoClient('mongodb://127.0.0.1:27017/')
+    str_server = "mongodb://192.168.17.128:27017/"
+    # str_server = "mongodb://127.0.0.1:27017/"
+
+    # client = MongoClient(str_server)
+    client = MongoClient(str_server)
 
     # DB 선택하기
     db = client['testdb']

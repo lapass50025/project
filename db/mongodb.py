@@ -11,8 +11,8 @@ def ConnectDB():
     pymongo 연결하기
     리턴값 : MongoCLient 객체
     """
-    # str_server = "mongodb://192.168.219.110:27017/"
-    str_server = "mongodb://127.0.0.1:27017/"
+    str_server = "mongodb://192.168.17.128:27017/"
+    # str_server = "mongodb://127.0.0.1:27017/"
 
     client = MongoClient(str_server)
     return client
