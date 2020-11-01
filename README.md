@@ -34,4 +34,7 @@
 
 ## 동영상 화면
 ==============
-[![Watch the video](https://img.youtube.com/vi/h7cqREN1ITQ/maxresdefault.jpg)](https://youtu.be/h7cqREN1ITQ)
+
+[![SC2 Video](https://img.youtube.com/vi/h7cqREN1ITQ/hqdefault.jpg)] (https://youtu.be/h7cqREN1ITQ)
+
+[![Watch the video](https://img.youtube.com/vi/h7cqREN1ITQ/hqdefault.jpg)](https://youtu.be/h7cqREN1ITQ)
